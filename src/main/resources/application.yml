@@ -1,14 +1,23 @@
 micronaut:
   application:
     name: envers
+#datasources:
+#  default:
+#    url: ${database.url:`jdbc:mysql://localhost:3306/envers`}
+#    username: ${database.username:InsertUsername}
+#    password: ${database.password:InsertPassword}
+#    driverClassName: ${database.driver:com.mysql.cj.jdbc.Driver}
 datasources:
   default:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    db-type: mysql
-    dialect: MYSQL
+    url: ${database.url:`InsertDBUrl`}
+    username: ${database.username:InsertUsername}
+    password: ${database.password:InsertPassword}
+    driverClassName: ${database.driver:com.mysql.cj.jdbc.Driver}
 jpa:
   default:
+    entity-scan:
+      packages: 'com.example.model'
     properties:
       hibernate:
         hbm2ddl:
-          auto: update
+          auto: create
